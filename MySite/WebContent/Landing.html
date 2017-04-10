@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Expense Analysis</title>
+<link rel="stylesheet" type="text/css" href="css/pie.css">
+<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+<script src="js/modernizr.js"></script> <!-- Modernizr -->
+</head>
+<script type="text/javascript">
+function PushOffer(offer){
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    	alert("Offer Send Successfully to all the users");
+	    }
+	  };
+	  xhttp.open("POST", "http://192.168.43.30:8080/IntellifyWebServices/service/getoffers", true);
+	  xhttp.send(document.getElementById(offer).innerHTML);
+}
+
+function sleep (time) {
+	  return new Promise((resolve) => setTimeout(resolve, time));
+	}
+
+function loadDoc() {
+	
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    	obj = JSON.parse(this.responseText);
+	    	
+	    	document.getElementById("r").innerHTML = obj.cards[1].citi.restaurants;
+	    	document.getElementById("e").innerHTML = obj.cards[1].citi.electronics;
+	    	document.getElementById("c").innerHTML = obj.cards[1].citi.clothing;
+	    	document.getElementById("re").innerHTML = obj.cards[1].citi.retail;
+	    	document.getElementById("g").innerHTML = obj.cards[1].citi.gas;
+	    	document.getElementById("pie_ico").innerHTML = 'CITI';
+	    	
+	    	document.getElementById("ar").innerHTML = obj.cards[2].amex.restaurants;
+	    	document.getElementById("ae").innerHTML = obj.cards[2].amex.electronics;
+	    	document.getElementById("ac").innerHTML = obj.cards[2].amex.clothing;
+	    	document.getElementById("are").innerHTML = obj.cards[2].amex.retail;
+	    	document.getElementById("ag").innerHTML = obj.cards[2].amex.gas;
+	    	
+	    }
+	  };
+	  xhttp.open("GET", "http://192.168.43.30:8080/IntellifyWebServices/service/cardUsage", true);
+	  xhttp.send();
+	  
+	}
+	
+	function setDiscover(){
+		//alert(obj.cards[0].Discover.restaurants+" "+obj.cards[0].Discover.electronics+" "+obj.cards[0].Discover.Clothing+" "+obj.cards[0].Discover.retail+" "+obj.cards[0].Discover.gas);
+		document.getElementById("r").innerHTML = obj.cards[0].discover.restaurants;
+    	document.getElementById("e").innerHTML = obj.cards[0].discover.electronics;
+    	document.getElementById("c").innerHTML = obj.cards[0].discover.clothing;
+    	document.getElementById("re").innerHTML = obj.cards[0].discover.retail;
+    	document.getElementById("g").innerHTML = obj.cards[0].discover.gas;
+    	document.getElementById("pie_ico").innerHTML = "DISCOVER";
+    	/* sleep(3000).then(() => {
+ 		   alert("AMEX is Significantly Lagging in \"Restaurants\" Category in comparision to DISCOVER");
+ 		}); */
+	}
+	
+	function setChase(){
+		//alert(obj.cards[3].Chase.restaurants+" "+obj.cards[3].Chase.electronics+" "+obj.cards[3].Chase.Clothing+" "+obj.cards[3].Chase.retail+" "+obj.cards[3].Chase.gas);
+		document.getElementById("r").innerHTML = obj.cards[3].chase.restaurants;
+    	document.getElementById("e").innerHTML = obj.cards[3].chase.electronics;
+    	document.getElementById("c").innerHTML = obj.cards[3].chase.clothing;
+    	document.getElementById("re").innerHTML = obj.cards[3].chase.retail;
+    	document.getElementById("g").innerHTML = obj.cards[3].chase.gas;
+    	document.getElementById("pie_ico").innerHTML = "CHASE";
+    	/* sleep(3000).then(() => {
+		   alert("AMEX is Significantly Lagging in \"Restaurants\" Category in comparision to DISCOVER");
+		}); */
+	}
+	
+	function setCiti(){
+		//alert(obj.cards[1].Citi.restaurants+" "+obj.cards[1].Citi.electronics+" "+obj.cards[1].Citi.Clothing+" "+obj.cards[1].Citi.retail+" "+obj.cards[1].Citi.gas);
+		document.getElementById("r").innerHTML = obj.cards[1].citi.restaurants;
+    	document.getElementById("e").innerHTML = obj.cards[1].citi.electronics;
+    	document.getElementById("c").innerHTML = obj.cards[1].citi.clothing;
+    	document.getElementById("re").innerHTML = obj.cards[1].citi.retail;
+    	document.getElementById("g").innerHTML = obj.cards[1].citi.gas;
+    	document.getElementById("pie_ico").innerHTML = "CITI";
+    	 sleep(3000).then(() => {
+		   alert("AMEX is Significantly Lagging in \"Restaurants\" Category in comparision to CITI");
+		}); 
+    	
+	}
+	
+	function setBofa(){
+		//alert(obj.cards[4].Bofa.restaurants+" "+obj.cards[4].Bofa.electronics+" "+obj.cards[4].Bofa.Clothing+" "+obj.cards[4].Bofa.retail+" "+obj.cards[4].Bofa.gas);
+		document.getElementById("r").innerHTML = obj.cards[4].bofa.restaurants;	    	
+    	document.getElementById("e").innerHTML = obj.cards[4].bofa.electronics;
+    	document.getElementById("c").innerHTML = obj.cards[4].bofa.clothing;
+    	document.getElementById("re").innerHTML = obj.cards[4].bofa.retail;
+    	document.getElementById("g").innerHTML = obj.cards[4].bofa.gas;
+    	document.getElementById("pie_ico").innerHTML = "BOFA";
+	}
+</script>
+<body onload="loadDoc();">
+<div id="header">
+<img style="position: absolute; padding-left:5px; width: 150px; height: 62px;top:5px" src="img/intellify.png" />
+		<p id="txt_title">AMERICAN EXPRESS
+		
+	</p>
+		<hr>
+		<p id="txt_subtitle">Data Analysis of American Express vs Other Cards</p>
+		
+	<main class="cd-main-content">
+		<a href="#0" style="float:right; margin-right:10px; top: -88px" class="cd-btn">Promotions</a>
+		</main>
+
+	<div class="cd-panel from-right">
+		<header class="cd-panel-header">
+			<h1 style="width:142px; padding-left:0px">Push Promotions</h1>
+			<a href="#0" class="cd-panel-close">Close</a>
+		</header>
+
+		<div class="cd-panel-container">
+			<div class="cd-panel-content">
+			<button id="off1" style="background-color: #0092b9; height:70px; width: 95%; position: relative; top:55px; margin-right:3px" onclick="PushOffer('off1');">American Express Offer on Restaurants : 10% Off on $20 Bill, Use Promo Code:Amex10</button>
+			<button id="off2" style="background-color: #86ad00; height:70px; width: 95%; position: relative; top:55px; margin-top:4px" onclick="PushOffer('off2')">American Express Offer on Electronics : Additional $10 Off any electronic on $100 or more</button>
+			<button id="off3" style="background-color: #e4ff00; height:70px; width: 95%; position: relative; top:55px; margin-top:4px" onclick="PushOffer('off3')">American Express Offer on Clothing : $10 Off on $100 or more shopping</button>
+			<button id="off4" style="background-color: #d97904; height:70px; width: 95%; position: relative; top:55px; margin-top:4px" onclick="PushOffer('off4')">American Express Offer on Retail : 5% Off on $50 or more shopping</button>
+			<button id="off5" style="background-color: #bc3603; height:70px; width: 95%; position: relative; top:55px; margin-top:4px" onclick="PushOffer('off5')">American Express Offer on gas : Additional 3% Cash Back on gas</button>
+			<button id="off6" style="background-color: #00ffdc; height:70px; width: 95%; position: relative; top:55px; margin-top:4px" onclick="PushOffer('off6')">American Express Offer: Additional 2% Cash Back on online shopping </button>
+				</div> <!-- cd-panel-content -->
+		</div> <!-- cd-panel-container -->
+	</div> <!-- cd-panel -->
+		
+	</div>
+	
+	<!-- <div id="chartContainer" style="height: 200px; width: 15%; float:left"></div> -->
+<div id="wrapper">
+	
+	<div id="q4_2009">
+	<div id="q3_2009">
+	<div id="q2_2009">
+	<div id="q1_2005"> 
+		
+		
+			<div id="chart_holder">
+			<div id="labels" class="lab1">
+			<ul>
+				<li><span></span>Restaurants</li>
+				<li><span></span>Electronics</li>
+				<li><span></span>Clothing</li>
+				<li><span></span>Retail</li>
+				<li><span></span>Gas</li>
+			</ul>
+		</div>
+		<div id="percentage_wrapper1">
+			<div id="percentage">
+				<ul>
+					<li><p id="r"></p></li>
+					<li><p id="e"></li>
+					<li><p id="c"></li>
+					<li><p id="re"></p></li>
+					<li><p id="g"></p></li>
+				</ul>
+			</div>
+		</div>
+				<div id="pie_chart1">
+					<ul>
+						<li id="c1_r"><p><span class="pie_left"></span></p></li> 	
+						<li id="c1_l"><p><span class="pie_right"></span></p></li>
+						<li id="c2_r"><p><span class="pie_left"></span></p></li> 	
+						<li id="c2_l"><p><span class="pie_right"></span></p></li>
+						<li id="c3_r"><p><span class="pie_left"></span></p></li> 	
+						<li id="c3_l"><p><span class="pie_right"></span></p></li>
+						<li id="c4_r"><p><span class="pie_left"></span></p></li> 	
+						<li id="c4_l"><p><span class="pie_right"></span></p></li>
+						<li id="c5_r"><p><span class="pie_left"></span></p></li> 	
+						<li id="c5_l"><p><span class="pie_right"></span></p></li>
+					</ul>
+				</div>
+				<div id="space"></div>
+				<div id="pie_chart">
+					<ul>
+						<li id="c1_r"><p><span class="pie_left"></span></p></li> 	
+						<li id="c1_l"><p><span class="pie_right"></span></p></li>
+						<li id="c2_r"><p><span class="pie_left"></span></p></li> 	
+						<li id="c2_l"><p><span class="pie_right"></span></p></li>
+						<li id="c3_r"><p><span class="pie_left"></span></p></li> 	
+						<li id="c3_l"><p><span class="pie_right"></span></p></li>
+						<li id="c4_r"><p><span class="pie_left"></span></p></li> 	
+						<li id="c4_l"><p><span class="pie_right"></span></p></li>
+						<li id="c5_r"><p><span class="pie_left"></span></p></li> 	
+						<li id="c5_l"><p><span class="pie_right"></span></p></li>
+					</ul>
+				</div>
+				<div id="space"></div>
+				<div id="percentage_wrapper">
+			<div id="percentage">
+				<ul>
+					<li><p id="ar"></li>
+					<li><p id="ae"></li>
+					<li><p id="ac"></li>
+					<li><p id="are"></li>
+					<li><p id="ag"></p></li>
+				</ul>
+			</div>
+		</div>
+				<div id="labels" class="lab">
+			<ul>
+				<li><span></span>Restaurants</li>
+				<li><span></span>Electronics</li>
+				<li><span></span>Clothing</li>
+				<li><span></span>Retail</li>
+				<li><span></span>Gas</li>
+			</ul>
+		</div>
+			
+		
+		<div id="pie_ico" style="font-weight: bold;font-size: 20px;"></div>
+		<div id="pyr_ico" style="font-weight: bold;font-size: 20px;">AMEX</div>
+		
+				
+			</div>
+		
+		<div id="btn_panel">
+			<ul>
+				<li><a href="#q1_2005" onclick="setDiscover();"><span>Discover</span><span>Pop:10232</span></a></li>
+				<li><a href="#q2_2009" onclick="setChase();"><span>Chase</span><span>Pop:9899</span></a></li>
+				<li><a href="#q3_2009" onclick="setBofa();"><span>BOFA</span><span>Pop:8977</span></a></li>
+				<li><a href="#q4_2009" onclick="setCiti();"><span>CITI</span><span>Pop:1088</span></a></li>
+			</ul>
+		</div>
+	</div> <!--q1_2005-->
+	</div> <!--q2_2009-->
+	</div> <!--q3_2009-->
+	</div> <!--q4_2009-->
+	
+	
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+	
+	
+</div>
+</body>
+</html>

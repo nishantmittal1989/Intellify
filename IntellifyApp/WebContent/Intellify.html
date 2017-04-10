@@ -1,0 +1,340 @@
+<!DOCTYPE html >
+<html lang="en">
+	
+	<head>
+		<title>Intellify App</title>
+		
+		<!-- Put intellify Logo here  -->
+		<link rel="shortcut icon" href="./images/images.ico" type="image/ico" />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+		<link rel="stylesheet" type="text/css" href="libraries/smoothness/jquery-ui.css" />
+		<link rel="stylesheet" href="libraries/jquery.mobile-1.3.2.css" />
+		<link rel="stylesheet" href="css/home.css">
+		<link rel="stylesheet" href="css/vehicleRegistration.css">
+		<link rel="stylesheet" href="css/common.css">
+		
+		<script type="text/javascript" src="libraries/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="libraries/jquery-ui.js"></script>
+		<script type="text/javascript" src="libraries/jquery.mobile-1.3.2.js"></script>
+		<script type="text/javascript" src="libraries/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="js/intellify.js"></script>
+		<script type="text/javascript" src="js/authentication.js"></script>
+		<script type="text/javascript" src="js/register.js"></script>
+		<script type="text/javascript" src="js/vehicleRegistration.js"></script>
+	</head>
+<body>
+
+
+	<div data-role="page" id="home-page-register" data-theme="d" style="min-height: 245px;">
+		
+		<!-- header -->
+		<div data-role="header" data-theme="b" class="ui-header ui-bar-b" role="banner">
+			<h1>INTELLIFY</h1>
+		</div>
+	
+		<!-- content -->
+		<div data-role="content" class="ui-content" role="main">
+		
+		<div data-role="navbar" id="home-page-tap">
+			<ul>
+				<li><a class="ui-btn-active ui-state-persist" id="old-user-tap">Sign In</a></li>
+				<li><a id="new-user-tap">Sign Up</a></li>
+			</ul>
+		</div>
+		
+		<div class="form-border old-user">
+			<!-- Registered User/ Sign In user  -->
+			<h3 style="text-align:center; color: #002665">AMERICAN EXPRESS</h3>
+			<h6 style="text-align:center">Good Afternoon, Experience Intellify with American Express</h6>
+			<!-- email -->
+   			<input type="text" name="name" id="username" value="" placeholder="UserName" />
+   			<!-- <label for="mobileNumber"></label> -->
+    		<input type="password" name="" id="password" value=""  placeholder="Password"/>
+    		<input value="Sign In" type="submit" id="register">
+		</div>
+			<!-- <div class="form-divider-line"></div> -->
+			
+			<!-------- Sign up User ---------->
+			<div class="form-border new-user" style="display:none">
+				<h3 style="text-align:center; color: #002665">AMERICAN EXPRESS</h3>
+				<h6 style="text-align:center">Good Afternoon, Experience Intellify with American Express</h6>
+				<label for="email"></label>
+	   			<input type="text" name="name" id="username-new" value="" placeholder="Type Any UserName" />
+	   			<label for="basic"></label>
+	    		<input type="password" name="name" id="firstpassword" value=""  placeholder="Enter Password"/>
+	    		<input type="password" name="name" id="repassword" value=""  placeholder="Re-Enter Password"/>
+	    		<input type="password" name="key" id="key" value="" placeholder="Enter Intellify Key"/>
+	    		<input value="Create Intellify Account" type="submit" id="submitPassword">
+    		 </div>
+    		 
+    		 <!-- Dialog -->
+			<div data-role="popup" id="errorPopup">
+				<p>Passwords doesn't match, Please Re-Enter</p>
+			</div>
+			
+			 <!-- Dialog -->
+			<div data-role="popup" id="successPopup">
+				<p>Welcome!!! Your account has been created</p>
+				<p>Redirecting to Sign In Screen ......</p>
+			</div>
+			
+			<div data-role="popup" id="errorPopupUserName">
+				<p>Please Enter Valid UserName</p>
+			</div>
+			
+			 <!-- Dialog -->
+			<div data-role="popup" id="successPopupPassWord">
+				<p>Please Enter Valid PassWord</p>
+			</div>
+
+		</div>
+		
+	
+	</div>
+	
+	<div data-role="page" id="home-page" data-theme="d" style="min-height: 245px;">
+		
+		<div class="loader"></div>
+		
+		<!-- header -->
+		<div data-role="header" data-theme="b" class="ui-header ui-bar-b" role="banner">
+			<a href="#left-panel" data-theme="d" data-icon="arrow-r" data-iconpos="notext" data-shadow="false" data-iconshadow="false"></a>
+			<h1>INTELLIFY APP</h1>
+			<a href="#home-page-register" data-icon="check">Logout</a>
+		</div>
+	
+		<!-- content -->
+		<div data-role="content" class="ui-content" role="main">
+		
+			<input type="text" name="name" id="basic" class="search-box" value="" data-mini="true" placeholder="Please search any trasaction details"/>
+			<a class="go-btn">Go</a>
+			
+			<div data-role="navbar" id="home-page-tap">
+			<ul>
+				<li><a class="ui-btn-active ui-state-persist" id="paid-tap">Transactions</a></li>
+			</ul>
+			</div>
+			
+			<div class="parent-list">
+			
+			</div>
+			
+		</div>
+
+		<!-- left panel -->	
+		<div data-role="panel" id="left-panel" data-theme="b">
+		
+			<div data-role="header" data-theme="b" class="ui-header ui-bar-b" role="banner">
+				<h1>Menu</h1>
+			</div>
+			
+			<ul data-role="listview">
+				<li><a href="#add-cards-page">Add Cards</a></li>
+				<li><a href="#help-page">Help</a></li>
+				<li><a href="#">Profile</a></li>
+				<li><a href="#invite-friend-page">Invite a Friend</a></li>
+				<li><a href="#" class="logout">Logout</a></li>
+			</ul>
+		
+		</div>
+	
+	</div>
+
+	<div data-role="page" data-theme="d" class="add-cards-page" id="add-cards-page">
+
+		<div class="ui-header ui-bar-b" data-theme="b" data-role="header">
+		<a href="#left-panel" data-theme="d" data-icon="arrow-r" data-iconpos="notext" data-shadow="false" data-iconshadow="false"></a>
+			<h1>Card Details</h1>
+			<a href="#home-page-register" data-icon="check" class="ui-btn-right">Logout</a>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+
+			<div class="last-body">
+				<hr>
+				<h5 class="card-heading">Please Fill in the following Information</h5>
+				<a class="add-card">Add Other Card</a>
+				<div class="add-image"></div>
+				<hr>
+			</div>
+
+			<form class="ui-authenticate-form" action="javascript:alert( 'success!' );">
+
+		<div class="parent-driver">
+			<div class="form-child-1">
+				<label for="select-custom-20" class="bold">Card Number</label> 
+				<input type="text" name="card-number" placeholder="Enter Card Number" class="card-number" /> 
+				
+				<label for="select-custom-20" class="bold">First Name</label> 
+				<input type="text" name="first-name" placeholder="Enter First Name" class="first-name" /> 
+				
+				<label for="select-custom-20" class="bold">Last Name</label> 
+				<input type="text" name="last-name" placeholder="Enter Last Name" class="last-name" /> 
+				
+				
+				<label for="select-custom-20" class="bold">Valid Thru</label>
+				<input type="text" name="valid-thru" placeholder="MM/YY" class="valid-thru" /> 
+				
+				<label for="select-custom-20" class="bold">CVV</label>
+				<input type="text" name="cvv" placeholder="Enter CVV" class="cvv" /> 
+				
+			<div class="save-form">
+				<button type="submit" data-theme="b" name="sace" value="submit-value" class="save-form">SAVE</button>
+			</div>
+		</div>
+		
+		</div>
+				
+			</form>
+
+		</div>
+		<div data-role="panel" id="left-panel" data-theme="b">
+		
+			<div data-role="header" data-theme="b" class="ui-header ui-bar-b" role="banner">
+				<h1>User Role</h1>
+			</div>
+			
+			<ul data-role="listview">
+				<li><a href="#home-page">Home</a></li>
+				<li><a href="#help-page">Help</a></li>
+				<li><a href="#">Profile</a></li>
+				<li><a href="#invite-friend-page">Invite a Friend</a></li>
+				<li><a href="#" class="logout">Logout</a></li>
+			</ul>
+		
+		</div>
+	</div>
+
+<!-- Help -->
+	<div data-role="page" class="help-page" id="help-page">
+
+	<div class="ui-header ui-bar-b" data-theme="b" data-role="header">
+	<a href="#left-panel" data-theme="d" data-icon="arrow-r" data-iconpos="notext" data-shadow="false" data-iconshadow="false"></a>
+		<h1>Contact Us</h1>
+	</div><!-- /header -->
+
+<div data-role="content">	
+<div class="middle-body">
+<hr>
+<h5 style="color: grey; font-style: italic">Please send us an Email with Brief Description of your Issue.We will contant you within 2 working days. We are Happy to Help You.</h5>
+<hr>
+</div>
+<div class="ui-authenticate-form" >
+<label for="help">Brief Description of your issue:</label>
+<textarea cols="40" rows="8" name="textarea-6" id="textarea-6" placeholder="Describe your issue in few words" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset"></textarea>
+<button type="submit" style="align:center" data-theme="b" name="submit" value="submit-value" class="help-submit" >Send Request</button>
+</div>
+<div data-role="popup" id="successSendInvitePopup">
+				<p>We have got your Request. We are working on it..!!</p>
+</div>
+
+<a href="#help-popup" role="button" class="ui-shadow ui-btn ui-corner-all ui-btn-inline" data-transition="slidedown" style="display:none">data-transition="slidedown"</a>
+
+
+</div>
+<div data-role="panel" id="left-panel" data-theme="b">
+		
+			<div data-role="header" data-theme="b" class="ui-header ui-bar-b" role="banner">
+				<h1>Menu</h1>
+			</div>
+			
+			
+			<ul data-role="listview">
+				<li><a href="#add-cards-page">Add Cards</a></li>
+				<li><a href="#home-page">Home</a></li>
+				<li><a href="#">Profile</a></li>
+				<li><a href="#invite-friend-page">Invite a Friend</a></li>
+				<li><a href="#" class="logout">Logout</a></li>
+			</ul>
+		
+		</div>
+</div>
+
+
+<!-- invite a friend page -->
+	
+<div data-role="page" class="invite-friend-page" id="invite-friend-page">
+
+	<div class="ui-header ui-bar-b" data-theme="b" data-role="header">
+	<a href="#left-panel" data-theme="d" data-icon="arrow-r" data-iconpos="notext" data-shadow="false" data-iconshadow="false"></a>
+		<h1>Invite your Friend</h1>
+	</div><!-- /header -->
+
+<div data-role="content">	
+<div class="middle-body">
+<hr>
+<h5 style="color: grey; font-style: italic">Invite your friend using their Email Id/Mobile Number</h5>
+<hr>
+</div>
+<div class="ui-authenticate-form" >
+<input type="text" placeholder="Enter Email Id/Phone Number to Invite" name="invite" class="invite"/>
+<button type="submit" style="align:center" data-theme="b" name="submit" value="submit-value" class="invite-friend" >Invite Friend</button>
+</div>
+<div data-role="popup" id="successSendInvitePopup">
+				<p>Your Friend has been Invited!!</p>
+</div>
+
+<a href="#email-friend-popup" role="button" class="ui-shadow ui-btn ui-corner-all ui-btn-inline" data-transition="slidedown" style="display:none">data-transition="slidedown"</a>
+
+</div>
+<div data-role="panel" id="left-panel" data-theme="b">
+		
+			<div data-role="header" data-theme="b" class="ui-header ui-bar-b" role="banner">
+				<h1>Menu</h1>
+			</div>
+			
+			<ul data-role="listview">
+				<li><a href="#add-cards-page">Add Cards</a></li>
+				<li><a href="#home-page">Home</a></li>
+				<li><a href="#help-page">Help</a></li>
+				<li><a href="#">Profile</a></li>
+				<li><a href="#" class="logout">Logout</a></li>
+			</ul>
+		
+		</div>
+</div>
+
+<div data-role="page" data-url="book-confirm.html" id="book-confirm">
+		<div data-role="header">
+			<h1>Transaction Details</h1>
+		</div>
+		<div data-role="content">
+			<p>This Transaction happened at McDonalds restaurant. The Transaction contains bill charged by McDonalds through Amex</p>
+			
+			<a data-role="button" data-rel="back" data-theme="b">Return to all Transactions</a>
+		</div>
+
+		
+	</div>
+
+<div data-role="dialog" id="email-friend-popup">
+	<div data-role="header"><h1>Email Confirmation</h1></div> 
+	<div data-role="content"><p>Thanks for referring Intellify. Email/Text has been sent to your friend</p><p>Thanks</p>
+	<a data-role="button" data-rel="back" data-theme="b" class="email-friend-ok">OK</a>
+	</div> 
+</div>
+
+<div data-role="dialog" id="help-popup">
+	<div data-role="header"><h1>Email Confirmation</h1></div> 
+	<div data-role="content"><p>We have received your Request. We are working on it..!!</p><p>Thanks</p>
+	<a data-role="button" data-rel="back" data-theme="b" class="help-ok">OK</a>
+	</div> 
+</div>
+
+
+
+<div id="loadingdemo" align="center"
+		style="z-index: 10012; font-size: 24px; width: 100%; color: white; height: 100%; background-image: url('images/blank.gif'); top: 0; left: 0; position: fixed; vertical-align: middle; display: none; bottom: 0px;"
+		>
+		<div class="" style="height: 100px; width: 200px;">
+			<label id="loadingText">Loading...</label> 
+			<img id="loadingImage"
+				alt="" src="images/ajax-loader.gif" align="middle">
+		</div>
+	</div>
+
+</body>
+</html>
